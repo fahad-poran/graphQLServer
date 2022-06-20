@@ -12,7 +12,7 @@ const app = express();
 connectDB();
 
 app.use(cors({
-        origin: "*",
+        origin: "https://radiant-dusk-79746.herokuapp.com/",
         credentials: true,
 }));
         //end point
