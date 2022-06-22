@@ -12,12 +12,12 @@ const app = express();
 
 connectDB();
 
+app.use(express.static('public'));
 
+app.get('*',(req,res)=>{
+        res.sendFile(path.resolve(__dirname,'public','index.html'));
+});
 
-app.use(cors({
-        origin: "*",
-        credentials: true,
-}));
         //end point
 app.use('/graphql',graphqlHTTP({
      schema,
@@ -29,15 +29,5 @@ app.get('/',(req,res)=>{
 });
 
 // Serve frontend
-if (process.env.NODE_ENV === 'production') {
-        app.use(express.static(path.join(__dirname, '../client/build')));
-      
-        app.get('*', (req, res) =>
-          res.sendFile(
-            path.resolve(__dirname, '../', 'client', 'build', 'index.html')
-          )
-        );
-      } else {
-        app.get('/', (req, res) => res.send('Please set to production'));
-      }
+
 app.listen(port,console.log(`server running on port: ${port}`));
