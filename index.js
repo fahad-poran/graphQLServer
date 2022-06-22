@@ -12,11 +12,8 @@ const app = express();
 
 connectDB();
 
-app.use(express.static('public'));
 
-app.get('*',(req,res)=>{
-        res.sendFile(path.resolve(__dirname,'public','index.html'));
-});
+
 
         //end point
 app.use('/graphql',graphqlHTTP({
