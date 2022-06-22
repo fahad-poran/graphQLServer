@@ -14,7 +14,10 @@ connectDB();
 
 
 
-
+app.use(cors({
+        origin: "*",
+        credentials: true,
+}));
         //end point
 app.use('/graphql',graphqlHTTP({
      schema,
